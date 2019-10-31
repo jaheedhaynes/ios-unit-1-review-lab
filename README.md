@@ -46,7 +46,29 @@ Make an array that contains all elements that appear more than twice in someRepe
 
 ```swift
 var someRepeatsAgain = [25,11,30,31,50,28,4,37,13,20,24,38,28,14,44,33,7,43,39,35,36,42,1,40,7,14,23,46,21,39,11,42,12,38,41,48,20,23,29,24,50,41,38,23,11,30,50,13,13,16,10,8,3,43,10,20,28,39,24,36,21,13,40,25,37,39,31,4,46,20,38,2,7,11,11,41,45,9,49,31,38,23,41,16,49,29,14,6,6,11,5,39,13,17,43,1,1,15,25]
+
+//Answer
+
+var arrayDict = [Int:Int]()
+for num in someRepeatsAgain {
+    if let value = arrayDict[num]{
+        arrayDict[num] = value + 1
+    } else {
+        arrayDict[num] = 1
+    }
+}
+
+//----------------------------
+
+var moreThanTwice = [Int]()
+for (key, value) in arrayDict {
+    if value > 2 {
+        moreThanTwice.append(key)
+    }
+}
+print(moreThanTwice)
 ```
+
 
 ## Question 3
 
@@ -72,8 +94,6 @@ let letterValues = [
 "i" : 312,
 "j" : 32,
 "k" : 93,
-"l" : 203,
-"m" : 212,
 "n" : 41,
 "o" : 102,
 "p" : 999,
@@ -92,6 +112,12 @@ let letterValues = [
 
 a. Sort the string below in descending order according the dictionary letterValues
 var codeString = "aldfjaekwjnfaekjnf"
+
+var codeString = "aldfjaekwjnfaekjnf"
+
+let letterValuesAscending = codeString.sorted(by: <)
+
+print(letterValuesAscending)
 
 
 b. Sort the string below in ascending order according the dictionary letterValues
@@ -242,4 +268,5 @@ Make a function that takes in an array of strings and returns an array of string
 Input: ["Hello", "Alaska", "Dad", "Peace", "Power"]
 
 Output: ["Alaska", "Dad", "Power"]
+
 ```
