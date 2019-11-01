@@ -221,13 +221,36 @@ struct BankAccount {
 
 a. Explain why the code above doesn't compile, then fix it.
 
+To change the properties of a struct you have to mutate the method
+
 b. Add a property called `deposits` of type `[Double]` that stores all of the deposits made to the bank account
+
+var deposits = [0.0]
+
+mutating func depositAmount(_ amount: Double) {
+    balance += amount
+    deposits.append(balance)
+}
 
 c. Add a property called `withdraws` of type `[Double]` that stores all of the withdraws made to the bank account
 
+var withdraws = [0.0]
+mutating func withdraw(_ amount: Double) {
+    balance -= amount
+    withdraws.append(balance)
+}
+
+
 d. Add a property called `startingBalance`.  Have this property be set to the original balance, and don't allow anyone to change it
 
+private var startingBal: Double { didSet {startingBal = balance}}
+
 e. Add a method called `totalGrowth` that returns a double representing the change in the balance from the starting balance to the current balance
+
+mutating func totalGrowth()->Double{
+    let change:Double = startingBal - balance
+    return change
+}
 
 ## Question 8
 
@@ -247,9 +270,40 @@ House Stark - Winter is coming
 House Targaryen - Fire and Blood
 
 House Lannister - A Lannister always pays his debts
+
+func rightThrone(house: GameOfThronesHouse) {
+    switch house{
+    case .stark:
+       print("Winter is coming")
+    case .baratheon:
+        print("Ours is the fury")
+    case . lannister:
+        print("A Lannister always pays his debts")
+    case .targaryen:
+        print("Fire and Blood")
+    }
+}
 ```
 
 b. Move that function to inside the enum as a method
+
+enum GameOfThronesHouse: String {
+    case stark, lannister, targaryen, baratheon
+    
+    func rightThrone() {
+        switch self{
+        case .stark:
+           print("Winter is coming")
+        case .baratheon:
+            print("Ours is the fury")
+        case . lannister:
+            print("A Lannister always pays his debts")
+        case .targaryen:
+            print("Fire and Blood")
+        }
+    }
+
+}
 
 ## Question 9
 
