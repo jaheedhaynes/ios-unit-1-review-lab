@@ -37,6 +37,21 @@ Britain is a history of repeated injuries and usurpations, all having in direct 
 establishment of an absolute Tyranny over these States. To prove this, let Facts be submitted to a
 candid world.
 """
+
+//Answer:
+
+var dopArr = declarationOfIndependence.components(separatedBy:" ").filter({$0.count > 5})
+var sampleDict = [String:Int]()
+
+for strGreaterThan5 in dopArr{
+    sampleDict[strGreaterThan5] = (sampleDict[strGreaterThan5] ?? 0) + 1
+}
+
+var mostFrequentGreaterThanFiveChar = sampleDict.sorted(by: {$0.value > $1.value})
+
+mostFrequentGreaterThanFiveChar[0].key
+mostFrequentGreaterThanFiveChar[0].value
+
 ```
 
 ## Question 2
@@ -258,7 +273,10 @@ library1.add(track: "Michelle")
 library1.add(track: "Voodoo Child")
 let library2 = library
 library2.add(track: "Come As You Are")
-```
+
+Answer: 
+
+This code does not compile because on line 274 'library' was never declared therefore it can not be equal to library2. However if the 'library' was changed to 'library1' then the contents for both would be equal because class' are value types
 
 ## Question 10
 
